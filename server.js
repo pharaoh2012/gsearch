@@ -18,13 +18,15 @@ var server = http.createServer(function(req, res) {
 			return;
 		}
 		var options = {
-			hostname: "ipv6.google.com",
+			hostname: "www.google.com",
 			port: 443,
 			path: req.url,
 			headers: {
-				"Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.6,en-US;q=0.4,en;q=0.2",
-				"User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36",
-				"Cookie": "PREF=ID=047808f19f6de346:U=0f62f33dd8549d11:FF=2:LD=zh-CN:NW=1:TM=1325338577:LM=1332142444:GM=1:SG=2:S=rE0SyJh2w1IQ-Maw"
+				"Accept-Language": "zh,zh-CN;q=0.8,zh-TW;q=0.6,en-US;q=0.4,en;q=0.2",
+				"referer": "https://www.google.com/",
+				"User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36",
+				//"Cookie": "PREF=ID=047808f19f6de346:U=0f62f33dd8549d11:FF=2:LD=zh-CN:NW=1:TM=1325338577:LM=1332142444:GM=1:SG=2:S=rE0SyJh2w1IQ-Maw"
+				"Cookie": "NID=79=pYKcZt3rrjBMtTcOUR6JVQJjZ8WUlbhLJeOd_531UdtB6_xLFnB1eJd7YfkESbXpcfG5I5z3U62jasOFccRrmPROJp2RDu5wbaO6UhuVLG-u2HqANSGZ9nIi-1zluEWbLAXpDdkBrc674hexXyp65Q"
 			}
 		};
 
@@ -36,7 +38,7 @@ var server = http.createServer(function(req, res) {
 			response.on("end", function(d) {
 				data += d;
 				//res.end(data.replace(/<script.+?<\/script>/mg, ""));
-				res.end(data.replace(/<script.*?>/mg, "<noscript>").replace(/<\/script>/g,"</noscript>"));
+				res.end(data.replace(/<script.*?>/mg, "<noscript>").replace(/<\/script>/g, "</noscript>"));
 			});
 
 		}).on("error", function(err) {
