@@ -18,7 +18,7 @@ var server = http.createServer(function(req, res) {
 			return;
 		}
 		var options = {
-			hostname: "www.google.com",
+			hostname: "ipv6.google.com",
 			port: 443,
 			path: req.url,
 			headers: {
