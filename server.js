@@ -3,6 +3,19 @@ var https = require("https");
 var url = require('url');
 var qs = require('querystring');
 
+function deleteScript(html) {
+    for (var i = 0; i < 50; ++i) {
+        var startIndex = html.indexOf("<script");
+        if (startIndex === -1)
+            break;
+        var endIndex = html.indexOf("</script>", startIndex);
+        if (endIndex === -1)
+            break;
+        html = html.substring(0, startIndex) + html.substring(endIndex + 9, html.length);
+    }
+    return html;
+}
+
 var server = http.createServer(function(req, res) {
 
 	if (req.url === "/favicon.ico") {
@@ -37,8 +50,9 @@ var server = http.createServer(function(req, res) {
 			});
 			response.on("end", function(d) {
 				data += d;
+				res.end(deleteScript(data));
 				//res.end(data.replace(/<script.+?<\/script>/mg, ""));
-				res.end(data.replace(/<script.*?>/mg, "<noscript>").replace(/<\/script>/g, "</noscript>"));
+				//res.end(data.replace(/<script.*?>/mg, "<noscript>").replace(/<\/script>/g, "</noscript>"));
 			});
 
 		}).on("error", function(err) {
