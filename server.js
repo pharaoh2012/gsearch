@@ -35,7 +35,7 @@ var server = http.createServer(function(req, res) {
 			});
 			response.on("end", function(d) {
 				data += d;
-				res.end(data.replace(/<script>.+?<\/script>/mg,""));
+				res.end(data.replace(/<script>.+?<\/script>/mg, ""));
 			});
 
 		}).on("error", function(err) {
@@ -48,7 +48,7 @@ var server = http.createServer(function(req, res) {
 			res.end(err.message + "<br /><a href='" + googleurl + "'>" + googleurl + "</a>" +
 				"<br /><a href='" + baiduurl + "'>" + baiduurl + "</a>");
 		});
-		request.setTimeout(5000,function(){
+		request.setTimeout(5000, function() {
 			request.abort();
 		});
 		request.end();
@@ -59,4 +59,4 @@ var server = http.createServer(function(req, res) {
 
 });
 
-server.listen(process.env.VCAP_APP_PORT || 5000);
+server.listen(process.env.OPENSHIFT_NODEJS_PORT || process.env.VCAP_APP_PORT || process.env.PORT || 5000);
