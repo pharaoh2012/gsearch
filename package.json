@@ -1,0 +1,25 @@
+{
+  "name": "gsearch",
+  "version": "1.0.0",
+  "description": "google search",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pharaoh2012/gsearch.git"
+  },
+  "keywords": [
+    "google",
+    "search",
+    "proxy"
+  ],
+  "author": "pharaoh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pharaoh2012/gsearch/issues"
+  },
+  "homepage": "https://github.com/pharaoh2012/gsearch#readme"
+}
