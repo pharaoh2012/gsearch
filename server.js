@@ -48,8 +48,7 @@ var server = http.createServer(function(req, res) {
 			response.on("data", function(d) {
 				data += d;
 			});
-			response.on("end", function(d) {
-				data += d;
+			response.on("end", function() {
 				res.end(deleteScript(data));
 				//res.end(data.replace(/<script.+?<\/script>/mg, ""));
 				//res.end(data.replace(/<script.*?>/mg, "<noscript>").replace(/<\/script>/g, "</noscript>"));
