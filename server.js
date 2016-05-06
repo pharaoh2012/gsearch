@@ -49,6 +49,9 @@ var server = http.createServer(function(req, res) {
 				data += d;
 			});
 			response.on("end", function() {
+				res.writeHead(200, {
+					"Content-Type": "text/html;charset=utf-8"
+				});
 				res.end(deleteScript(data));
 				//res.end(data.replace(/<script.+?<\/script>/mg, ""));
 				//res.end(data.replace(/<script.*?>/mg, "<noscript>").replace(/<\/script>/g, "</noscript>"));
