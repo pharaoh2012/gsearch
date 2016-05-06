@@ -70,7 +70,7 @@ var server = http.createServer(function(req, res) {
 		request.end();
 		return;
 	}
-
+	res.writeHead(404, {});
 	res.end("usage: /search?q=...");
 
 });
