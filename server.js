@@ -35,7 +35,8 @@ var server = http.createServer(function(req, res) {
 			});
 			response.on("end", function(d) {
 				data += d;
-				res.end(data.replace(/<script>.+?<\/script>/mg, ""));
+				//res.end(data.replace(/<script.+?<\/script>/mg, ""));
+				res.end(data.replace(/<script.*?>/mg, "<noscript>").replace(/<\/script>/g,"</noscript>"));
 			});
 
 		}).on("error", function(err) {
