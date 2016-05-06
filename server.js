@@ -4,16 +4,16 @@ var url = require('url');
 var qs = require('querystring');
 
 function deleteScript(html) {
-    for (var i = 0; i < 50; ++i) {
-        var startIndex = html.indexOf("<script");
-        if (startIndex === -1)
-            break;
-        var endIndex = html.indexOf("</script>", startIndex);
-        if (endIndex === -1)
-            break;
-        html = html.substring(0, startIndex) + html.substring(endIndex + 9, html.length);
-    }
-    return html;
+	for (var i = 0; i < 50; ++i) {
+		var startIndex = html.indexOf("<script");
+		if (startIndex === -1)
+			break;
+		var endIndex = html.indexOf("</script>", startIndex);
+		if (endIndex === -1)
+			break;
+		html = html.substring(0, startIndex) + html.substring(endIndex + 9, html.length);
+	}
+	return html;
 }
 
 var server = http.createServer(function(req, res) {
@@ -75,4 +75,4 @@ var server = http.createServer(function(req, res) {
 
 });
 
-server.listen(process.env.OPENSHIFT_NODEJS_PORT || process.env.VCAP_APP_PORT || process.env.PORT || 5000);
+server.listen(process.env.OPENSHIFT_NODEJS_PORT || process.env.VCAP_APP_PORT || process.env.PORT || 5000, process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
